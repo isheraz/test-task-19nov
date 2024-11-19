@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.urls import path, include
 from rest_framework import routers
+from apps.demo.views import PostListView
 
 
 router = routers.DefaultRouter()
-urlpatterns = [path('', include(router.urls)),]
+urlpatterns = [
+    path('', include(router.urls)),
+    path('posts/', PostListView.as_view(), name='post-list'),
+]
